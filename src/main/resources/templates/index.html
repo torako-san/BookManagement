@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-<meta charset="UTF-8">
-<title>書籍情報管理システム</title>
+<head th:replace="header::head(~{::title})">
+	<title>書籍管理システム</title>
 </head>
 <body>
+	<header th:replace="header::header"></header>
 	<div>
 		<h1>
 		ようこそ！<br>
