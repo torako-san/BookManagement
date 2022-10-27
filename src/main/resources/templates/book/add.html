@@ -8,7 +8,7 @@
 	<header th:replace="header::header"></header>
 	<div>
 		<form th:action="@{/book/create}" th:object="${bookForm}" method="post">
-			<div th:insert="form::form"></div>
+			<div th:insert="/form"></div>
 			<button type="submit">登録</button>
 		</form>
 	</div>
