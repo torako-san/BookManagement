@@ -1,5 +1,13 @@
 package com.example.demo.domain.repository;
 
-public class BookRepository {
+import java.awt.print.Book;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface BookRepository  {
+	public int save(Book book);
+	
+	public Book existsIsbn(String isbn);
 
 }
