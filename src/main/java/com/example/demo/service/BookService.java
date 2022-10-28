@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +25,10 @@ public class BookService {
 		book.setUpdated_user(userId);
 		book.setUpdated_at(now);
 		repository.save(book);
+	}
+	
+	public ArrayList<Book> selectMany(Map<String, String>params) {
+		return repository.selectMany(params);
 	}
 
 //	public boolean existsIsbn(String isbn) {
