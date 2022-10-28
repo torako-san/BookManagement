@@ -20,15 +20,43 @@
 	<result column="version" property="version"></result>
   </resultMap>
 
-  <insert id="save">
-	INSERT INTO book (name, isbn, description, publisher, price, publication_date,
-		created_user, created_at, updated_user, updated_at)
-	VALUES (#{name}, #{isbn}, #{description}, #{publisher}, #{price}, #{publication_date},
-        #{created_user}, #{created_at}, #{updated_user}, #{updated_at})
-  </insert>
 
-  <select id="existsIsbn" resultMap="book">
-  	SELECT * FROM book WHERE isbn = #{isbn} AND deleted_at IS NULL
+  <select id="selectMany" resultMap="book">
+  	SELECT * FROM book WHERE deleted_at IS NULL
+	<if test="name != ''">
+		<bind name="name_pattern" value="'%' + name + '%'" />
+		AND name LIKE #{name_pattern}
+	</if>
+   	<if test="isbn != ''">
+   		<bind name="isbn_pattern" value="isbn + '%'" />
+    	AND isbn LIKE #{isbn_pattern}
+ 		</if>
+   	<if test="publisher != ''">
+   		<bind name="publisher_pattern" value="'%' + publisher + '%'" />
+			AND publisher LIKE #{publisher_pattern}
+ 	</if>
+ 	<choose>
+    	<when test="price_from != '' and price_to != ''">
+      		AND price BETWEEN #{price_from} and #{price_to}
+    	</when>
+    	<when test="price_from != ''">
+      		AND price <![CDATA[ >= ]]> #{price_from}
+    	</when>
+    	<when test="price_to != ''">
+      		AND price <![CDATA[ <= ]]> #{price_to}
+    	</when>
+  	</choose>
+  	<choose>
+    	<when test="publication_date_from != '' and publication_date_to != ''">
+      		AND publication_date BETWEEN #{publication_date_from} and #{publication_date_to}
+    	</when>
+    	<when test="publication_date_from != ''">
+      		AND publication_date <![CDATA[ >= ]]> #{publication_date_from}
+    	</when>
+    	<when test="publication_date_to != ''">
+      		AND publication_date <![CDATA[ <= ]]> #{publication_date_to}
+    	</when>
+  	</choose>
   </select>
 
 </mapper>
