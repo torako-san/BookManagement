@@ -8,11 +8,10 @@ import lombok.Data;
 
 @Data
 public class Book {
-	// MybatisのresultMap用にデフォルトコンストラクタを用意しておきます。
+	// MybatisのresultMap用にデフォルトコンストラクタ
 	public Book() {}	
 	
 	// BookFormの値を格納するためのコンストラクタ
-	// （Controller内でSetterを使って格納するよりこちらの方がスマート）
 	public Book(BookForm form) {
 		this.id = form.getId();
 		this.name = form.getName();

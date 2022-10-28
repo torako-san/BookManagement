@@ -22,12 +22,9 @@ public class BookCotroller {
 	
 	@PostMapping("book/create")
 	public String postCreate(@Validated BookForm form, BindingResult result, Model model, BookService service) {
-		// ISBNコードは登録されているデータ内で一意である必要があるため、
-		// 既に登録済みであることをチェックしています。
-		
+	
 //		if(service.existsIsbn(form.getIsbn())) {
-//			// ISBNコードが既に使われていれば、
-//			// エラーとなるフィールド(isbn)とエラーコード(existsIsbn)を設定します。
+//			// ISBNコードが既に使われていれば、エラーとなるフィールド(isbn)とエラーコード(existsIsbn)を設定
 //			result.rejectValue("isbn", "existsIsbn");
 //		}
 
