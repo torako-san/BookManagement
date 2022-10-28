@@ -56,7 +56,7 @@ public class BookCotroller {
 		return "book/list";
 	}
 	
-	@GetMapping("book/seach")
+	@GetMapping("book/search")
 	public String getSearch(@RequestParam Map<String, String> params, Model model) {
 		
 		// 取得したリクエストパラメータを引数として、サービス層に検索処理を委譲
