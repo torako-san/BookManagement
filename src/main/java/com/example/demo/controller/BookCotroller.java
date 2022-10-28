@@ -42,4 +42,9 @@ public class BookCotroller {
 		// 検索一覧画面に遷移します。
 		return "book/list";
 	}
+	
+	@GetMapping("book/list")
+	public String getList(Model model) {
+		return "book/list";
+	}
 }
