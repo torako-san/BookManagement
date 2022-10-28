@@ -26,13 +26,13 @@ public class BookService {
 		book.setUpdated_at(now);
 		repository.save(book);
 	}
-	
-	public ArrayList<Book> selectMany(Map<String, String>params) {
-		return repository.selectMany(params);
-	}
 
 	public boolean existsIsbn(String isbn) {
 		return repository.existsIsbn(isbn) == null ? false : true;
+	}
+	
+	public ArrayList<Book> selectMany(Map<String, String> params) {
+		return repository.selectMany(params);
 	}
 
 }

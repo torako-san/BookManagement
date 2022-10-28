@@ -13,5 +13,5 @@ public interface BookRepository {
 
 	public Book existsIsbn(String isbn);
 	
-	public ArrayList<Book> selectMany(Map<String, String>params);
+	public ArrayList<Book> selectMany(Map<String, String> params);
 }
