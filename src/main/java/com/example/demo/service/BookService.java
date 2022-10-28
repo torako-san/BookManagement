@@ -31,8 +31,8 @@ public class BookService {
 		return repository.selectMany(params);
 	}
 
-//	public boolean existsIsbn(String isbn) {
-//		return repository.existsIsbn(isbn) == null ? false : true;
-//	}
+	public boolean existsIsbn(String isbn) {
+		return repository.existsIsbn(isbn) == null ? false : true;
+	}
 
 }

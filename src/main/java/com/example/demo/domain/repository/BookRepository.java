@@ -11,7 +11,7 @@ import com.example.demo.domain.model.Book;
 public interface BookRepository {
 	public int save(Book book);
 
-//	public Book existsIsbn(String isbn);
+	public Book existsIsbn(String isbn);
 	
 	public ArrayList<Book> selectMany(Map<String, String>params);
 }

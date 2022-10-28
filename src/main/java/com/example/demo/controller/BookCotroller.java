@@ -31,10 +31,10 @@ public class BookCotroller {
 	@PostMapping("book/create")
 	public String postCreate(@Validated BookForm form, BindingResult result, Model model) {
 	
-//		if(service.existsIsbn(form.getIsbn())) {
-//			// ISBNコードが既に使われていれば、エラーとなるフィールド(isbn)とエラーコード(existsIsbn)を設定
-//			result.rejectValue("isbn", "existsIsbn");
-//		}
+		if(service.existsIsbn(form.getIsbn())) {
+		// ISBNコードが既に使われていれば、エラーとなるフィールド(isbn)とエラーコード(existsIsbn)を設定
+			result.rejectValue("isbn", "existsIsbn");
+		}
 
 		// エラーがあれば登録フォームを再表示させます。
 		if(result.hasErrors()) {
