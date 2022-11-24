@@ -7,7 +7,7 @@
 <body>
 	<header th:replace="header::header"></header>
 	<div>
-		<form th:action="@{/book/create}" th:object="${bookForm}" method="post">
+		<form th:action="@{list}" th:object="${book}" method="post">
 			<div th:insert="book/form"></div>
 			<button type="submit">登録</button>
 		</form>
