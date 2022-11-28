@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -42,5 +43,15 @@ public class Book {
 	private Date publication_date;
 	
 	private int version;
+
+	public String priceCommaOf1000() {
+		return String.format("%,d", price);
+	}
+	
+	public String publicationDateOfYyyymmdd() {
+		if(publication_date == null) return "";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+		return sdf.format(publication_date).toString();
+	}
 
 }
