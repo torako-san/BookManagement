@@ -1,20 +1,47 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="header::head(~{::title})">
+<xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">	
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+
 		<title>登録リスト</title>
 	</head>
 	<body>
 		<header th:replace="header::header"></header>
-		<div th:each ="book:${books}"> 
-			<div>
-				[[${book.id}]] - 
-				<td>書籍名：</td>[[${book.name}]] / 
-				<td>ISBNコード：</td>[[${book.isbn}]] / 
-				<td>価格：</td>[[${book.price}]] /
-				<td>出版社：</td>[[${book.publisher}]] /
-				<td>出版年月日：</td>[[${book.publication_date}]]/
-				<td>書籍の内容：</td>[[${book.description}]] 
-			</div>
+		<div>
+			<table class="table table-bordered"> 
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>書籍名</th>
+						<th>ISBNコード</th>
+						<th>価格</th>
+						<th>出版社</th>
+						<th>出版年月日</th>
+						<th>書籍の内容</th>
+						<th>価格</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each ="book : ${books}">
+						<td th:text="${book.id}"></td>
+						<td th:text="${book.name}"></td>
+						<td th:text="${book.isbn}"></td>
+						<td th:text="${book.priceCommaOf1000()} + '円'"></td>
+						<td th:text="${book.publisher}"></td>
+						<td th:text="${book.publicationDateOfYyyymmdd()}"></td>
+						<td th:text="${book.description}"></td>
+						<td>
+							<a class="btn btn-navy">
+								<i class="bi bi-pencil-square"></i>
+								編集
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>

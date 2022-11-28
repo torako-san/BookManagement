@@ -2,16 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head(title)">
 	<meta charset="UTF-8">
+	
 	<title th:replace="${title}">title</title>
-	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
-	<script th:src="@{/js/dialog.js}" defer="defer"></script>
 </head>
   <body>
-  	<header th:fragment="header">
-		<a th:href="@{/}">ホーム</a>
-		<a th:href="@{/book/list}">登録リスト</a>
-		<a th:href="@{/book/add}">新規登録</a>
-		<hr>
+  	<header th:fragment="header" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">
+  		<nav class="my-2 my-md-0 mr-md-3">
+			<a th:href="@{/}" class="btn my-auto p-2 text-dark">ホーム</a>
+			<a th:href="@{/book/list}" class="btn my-auto p-2 text-dark">登録リスト</a>
+			<a th:href="@{/book/add}" class="btn my-auto p-2 text-dark">新規登録</a>
+  		</nav>
   	</header>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
   </body>
 </html>
