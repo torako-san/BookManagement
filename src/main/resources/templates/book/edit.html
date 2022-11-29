@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+			<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+			<link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+		<title>書籍情報更新</title>
+	</head>
+	
+	<body>
+		<header th:replace="header::header"></header>
+		<div>
+			<form th:action="@{book/update}" th:object="${book}" method="post">
+				<div th:insert="book/form"></div>
+				<button "btn-primary" type="submit">更新</button>
+			</form>
+		</div>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	</body>
+</html>
