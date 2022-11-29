@@ -8,11 +8,12 @@
 
 	<body>
 		<header th:replace="header::header"></header>
-		<div class="container">
+		<div>
 			<form th:action="@{list}" th:object="${book}" method="post">
 				<div th:insert="book/form"></div>
 				<button class="btn-primary" type="submit">登録</button>
 			</form>
 		</div>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>
