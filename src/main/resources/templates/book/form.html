@@ -50,6 +50,8 @@
 					</td>
 				</tr>
 			</table>
+			<input type="hidden" name="id" th:field="*{id}" >
+			<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
 		</div>
 	</body>
 </html>
