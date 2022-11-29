@@ -21,7 +21,7 @@ public class Book {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	@Size(min=1, max=100)
 	private String name;
@@ -41,8 +41,6 @@ public class Book {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publication_date;
-	
-	private int version;
 
 	public String priceCommaOf1000() {
 		return String.format("%,d", price);

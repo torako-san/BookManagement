@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.BookRepository;
@@ -44,4 +45,19 @@ public class IndexController {
 		return "book/list";
 	}
 	
+	@GetMapping("book/edit/{id}")
+	public String editBook(@PathVariable Long id,  Model model) {
+		model.addAttribute("book", repository.findById(id));
+		return "book/edit";
+	}
+	
+	@PostMapping("book/update")
+	public String updateBook(@Validated @ModelAttribute Book book, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "book/edit";
+		}
+		repository.save(book);
+		model.addAttribute("books", repository.findAll());
+		return "book/list";
+	}
 }
