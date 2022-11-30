@@ -20,7 +20,7 @@
 						<th>出版社</th>
 						<th>出版年月日</th>
 						<th>書籍の内容</th>
-						<th>価格</th>
+						<th>その他</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,9 +33,13 @@
 						<td th:text="*{publicationDateOfYyyymmdd()}"></td>
 						<td th:text="*{description}"></td>
 						<td>
-							<a th:href="@{/book/edit/} + ${book.id}" class="btn btn-navy">
+							<a th:href="@{/book/edit/} + ${book.id}" class="btn btn-info">
 								<i class="bi bi-pencil-square"></i>
 								編集
+							</a>
+							<a th:href="@{/book/delete/} + ${book.id}" class="btn btn-danger">
+								<i class="bi bi-trash-fill"></i>
+								削除
 							</a>
 						</td>
 					</tr>

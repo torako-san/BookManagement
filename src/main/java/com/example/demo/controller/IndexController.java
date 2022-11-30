@@ -60,4 +60,11 @@ public class IndexController {
 		model.addAttribute("books", repository.findAll());
 		return "book/list";
 	}
+	
+	@GetMapping("book/delete/{id}")
+	public String deleteBook(@PathVariable Long id, Model model) {
+		repository.deleteById(id);
+		model.addAttribute("books", repository.findAll());
+		return "book/list";
+	}
 }
