@@ -67,4 +67,9 @@ public class IndexController {
 		model.addAttribute("books", repository.findAll());
 		return "book/list";
 	}
+	
+	@GetMapping("book/listSearch")
+	public String getSearch(Model model) {
+		return "book/listSearch";
+	}
 }
