@@ -39,6 +39,15 @@ public class Book {
 	@Min(0)
 	private int price;
 	
+	public String isbnFormat() {
+		String prefix = isbn.substring(0,3);			// 接頭記号(3桁)
+		String group = isbn.substring(3,4);				// グループ記号(1桁)
+		String publisher = isbn.substring(4,10);		// 出版者記号(6桁)
+		String bookName = isbn.substring(10,12);		// 書名記号(2桁)
+		String checkDigit = isbn.substring(12,13);		// チェックディジット(1桁)
+		return String.join("-", prefix, group, publisher, bookName, checkDigit);
+	}
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publication_date;
 
