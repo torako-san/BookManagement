@@ -16,18 +16,24 @@
       <div th:if="${books.size() > 0}">
         <table class="table table-striped">
           <thead class="thead-dark">
-            <tr><th>書籍名</th><th>ISBN</th><th>出版社</th><th>価格</th><th>出版年月日</th><th colspan="2"></th></tr>
+            <tr><th>書籍名</th><!--<th>ISBN</th><th>出版社</th><th>価格</th><th>出版年月日</th>
+            <th colspan="2"></th></tr> -->
           </thead>
           <tbody>
             <tr th:each="book : ${books}">
-              <td th:text="${book.name}"></td><td th:text="${book.isbnFormat()}"></td><td th:text="${book.publisher}"></td>
-              <td th:text="${book.priceCommaOf1000()} + '円'" align="right"></td><td th:text="${book.publicationDateOfYyyymmdd()}"></td>
-              <td><a class="btn btn-outline-primary btn-sm" th:href="@{/book/edit/} + ${book.id}">編集</a></td>
+              <td th:text="${book.name}"></td><td th:text="${book.isbnFormat()}"></td>
+              <!--<td th:text="${book.publisher}"></td>
+              <td th:text="${book.priceCommaOf1000()} + '円'" align="right"></td>
+              <td th:text="${book.publicationDateOfYyyymmdd()}"></td>-->
+              <td>
+              	<a class="btn btn-outline-primary btn-sm" th:href="@{/book/edit/} + ${book.id}">
+              		編集
+              	</a>
+              </td>
               <td>
                 <form th:action="@{/book/delete}" method="post">
                   <button class="delete-action btn btn-outline-danger btn-sm" type="submit">削除</button>
                   <input type="hidden" th:value="${book.id}" name="id">
-                  <input type="hidden" th:value="${book.version}" name="version">
                 </form>
               </td>
             </tr>
