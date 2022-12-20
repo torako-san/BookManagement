@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<header th:replace="header::header"></header>
+		<div th:replace="book/search"></div>
 		<div class="container-lg">
 			<table class="table table-bordered"> 
 				<thead>
@@ -27,7 +28,7 @@
 					<tr th:each ="book : ${books}" th:object="${book}">
 						<td th:text="*{id}"></td>
 						<td th:text="*{name}"></td>
-						<td th:text="*{isbn}"></td>
+						<td th:text="*{isbnFormat}"></td>
 						<td th:text="*{priceCommaOf1000()} + '円'"></td>
 						<td th:text="*{publisher}"></td>
 						<td th:text="*{publicationDateOfYyyymmdd()}"></td>
