@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="header::head(~{::title})">
-	<title>書籍情報一覧</title>
+
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+	<title></title>
 </head>
 <body>
-	<header th:replace="header::header"></header>
-	<div th:replace="book/search"></div>
-
-	<div th:text="${error}"></div>
-	<div th:if="${books}">
-		<div th:if="${books.size() == 0}">検索結果は0件です。</div>
-		<div th:if="${books.size() > 0}">
-			<table border="1">
-				<thead>
-					<tr><td>書籍名</td><td>ISBN</td><td>出版社</td><td>価格</td><td>出版年月日</td><td colspan="2"></td></tr>
-				</thead>
-				<tbody th:each="book : ${books}">
-					<tr><td th:text="${book.name}"></td><td th:text="${book.isbnFormat()}"></td><td th:text="${book.publisher}"></td>
-						<td th:text="${book.priceCommaOf1000()} + '円'" align="right"></td><td th:text="${book.publicationDateOfYyyymmdd()}"></td>
-						<td><a th:href="@{/book/edit/} + ${book.id}">編集</a></td>
-						<td>
-							<form th:action="@{/book/delete}" method="post">
-								<button class="delete-action" type="submit">削除</button>
-								<input type="hidden" th:value="${book.id}" name="id">
-								<input type="hidden" th:value="${book.version}" name="version">
-							</form>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+	<div class="container" th:fragment="search">
+		<form th:action="@{/book/search}" method="get" th:object="${books}">
+			<div class="form-group form-inline input-group-sm">
+			    <label for="name" class="col-md-2 control-label">書籍名</label>
+			    <input type="text" class="form-control col-md-5" id="name" name="name" placeholder="書籍名">
+			</div>
+                <!-- <label for="isbn" class="col-md-2 control-label">ISBNコード</label>
+			    <input type="text" class="form-control col-md-3" id="isbn" name="isbn" placeholder="ISBNコード">
+			</div>
+			<div class="form-group form-inline input-group-sm">
+			    <label for="price_from" class="col-md-2 control-label">価格</label>
+			    <input type="number" class="form-control col-md-2" id="price_from" name="price_from" placeholder="下限">
+				<label class="col-md-1 control-label">～</label>
+			    <input type="number" class="form-control col-md-2" id="price_to" name="price_to" placeholder="上限">
+			  	<label for="publisher" class="col-md-2 control-label">出版社</label>
+			    <input type="text" class="form-control col-md-3" id="publisher" name="publisher" placeholder="出版社">
+			</div>
+			<div class="form-group form-inline input-group-sm">
+			    <label for="price_from" class="col-md-2 control-label">出版年月日</label>
+			    <input type="date" class="form-control col-md-3" id="publication_date_from" name="publication_date_from" placeholder="From">
+			    <label class="col-md-1 control-label">～</label>
+			    <input type="date" class="form-control col-md-3" id="publication_date_to" name="publication_date_to" placeholder="To">
+			    <div class="col-md-3"></div>
+			</div> -->
+			<div class="text-center">
+				<button class="btn btn-sm btn-outline-secondary mt-3" type="submit" value="検索">検索</button>
+			</div>
+		</form>
+		<hr>
 	</div>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
