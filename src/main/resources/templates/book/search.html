@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container" th:fragment="search">
-		<form th:action="@{/book/search}" method="get">
+		<form th:action="@{/book/search}" method="get" th:object="${books}">
 			<div class="form-group form-inline input-group-sm">
 			    <label for="name" class="col-md-2 control-label">書籍名</label>
 			    <input type="text" class="form-control col-md-5" id="name" name="name" placeholder="書籍名">
@@ -33,7 +33,7 @@
 			    <div class="col-md-3"></div>
 			</div> -->
 			<div class="text-center">
-				<button class="btn btn-sm btn-outline-secondary mt-3" type="submit">検索</button>
+				<button class="btn btn-sm btn-outline-secondary mt-3" type="submit" value="検索">検索</button>
 			</div>
 		</form>
 		<hr>
