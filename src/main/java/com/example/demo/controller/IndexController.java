@@ -73,7 +73,7 @@ public class IndexController {
 	
 	@GetMapping("book/search")
 	public String search(@RequestParam(name= "name", required = false) String name, Model model) {
-		List<Book> books = repository.findByNameLike(name);
+		List<Book> books = repository.findByNameLike("%"+name+"%");
 		model.addAttribute("books", books);
 		return "book/list";
 	}
