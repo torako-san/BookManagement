@@ -10,42 +10,48 @@
 	<body>
 		<header th:replace="header::header"></header>
 		<div th:replace="book/search"></div>
-		<div class="container-lg">
-			<table class="table table-bordered"> 
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>書籍名</th>
-						<th>ISBNコード</th>
-						<th>価格</th>
-						<th>出版社</th>
-						<th>出版年月日</th>
-						<th>書籍の内容</th>
-						<th>その他</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each ="book : ${books}" th:object="${book}">
-						<td th:text="*{id}"></td>
-						<td th:text="*{name}"></td>
-						<td th:text="*{isbnFormat}"></td>
-						<td th:text="*{priceCommaOf1000()} + '円'"></td>
-						<td th:text="*{publisher}"></td>
-						<td th:text="*{publicationDateOfYyyymmdd()}"></td>
-						<td th:text="*{description}"></td>
-						<td>
-							<a th:href="@{/book/edit/} + ${book.id}" class="btn btn-info">
-								<i class="bi bi-pencil-square"></i>
-								編集
-							</a>
-							<a th:href="@{/book/delete/} + ${book.id}" class="btn btn-danger">
-								<i class="bi bi-trash-fill"></i>
-								削除
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		
+		<div class="container">
+		    <div th:if="${books}">
+				<div th:if="${books.size() == 0}">検索結果は0件です。</div>
+     			<div th:if="${books.size() > 0}">
+				<table class="table table-bordered"> 
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>書籍名</th>
+							<th>ISBNコード</th>
+							<th>価格</th>
+							<th>出版社</th>
+							<th>出版年月日</th>
+							<th>書籍の内容</th>
+							<th>その他</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each ="book : ${books}" th:object="${book}">
+							<td th:text="*{id}"></td>
+							<td th:text="*{name}"></td>
+							<td th:text="*{isbnFormat}"></td>
+							<td th:text="*{priceCommaOf1000()} + '円'"></td>
+							<td th:text="*{publisher}"></td>
+							<td th:text="*{publicationDateOfYyyymmdd()}"></td>
+							<td th:text="*{description}"></td>
+							<td>
+								<a th:href="@{/book/edit/} + ${book.id}" class="btn btn-info">
+									<i class="bi bi-pencil-square"></i>
+									編集
+								</a>
+								<a th:href="@{/book/delete/} + ${book.id}" class="btn btn-danger">
+									<i class="bi bi-trash-fill"></i>
+									削除
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+     			</div>
+     		</div>
 		</div>
 		<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	</body>
